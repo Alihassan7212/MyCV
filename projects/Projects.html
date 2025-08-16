@@ -58,9 +58,23 @@
   <script>
     // 🔧 Fill in images you add to /images (or change the path per item)
     const projects = [
+ {
+        title: "Design and Development of Smart Hydropower System",
+        image: "Design and Development of Smart Hydropower System.png",
+        desc: "Hydropower plant with online monitoring/control to stabilize voltage and frequency, with IoT logging and alarms.",
+        features: [
+          "Uninterrupted Power Supply",
+          "Stabilized Frequency & Voltage",
+          "24/7 IoT-based monitoring",
+          "Remote access via web",
+          "Continuous online data logging",
+          "Fault alarming"
+        ],
+        sensors: "ACS712 Current Sensor, Smoke sensor, Tachometer, Servomotor"
+      },
       {
         title: "Temperature Control and Energy Monitoring System",
-        image: "images/temp-control-energy.jpg",
+        image: "Temperature Control and Energy Monitoring System.png",
         desc: "Uses a microcontroller and temperature sensors to control fans/heaters/AC based on thresholds and track power usage; suited for homes and industries.",
         features: [
           "Automatic appliance control based on temperature",
@@ -71,7 +85,7 @@
       },
       {
         title: "Arduino Based Radar",
-        image: "images/arduino-radar.jpg",
+        image: "Arduino Based Radar.png",
         desc: "Ultrasonic radar scans a set area, detects objects, and displays positions; compact, cost-effective real-world radar simulation.",
         features: [
           "Adjustable object detection range",
@@ -82,7 +96,7 @@
       },
       {
         title: "Obstacle Avoidance Robot",
-        image: "images/obstacle-avoidance-robot.jpg",
+        image: "Obstacle Avoidance Robot.png",
         desc: "Autonomous robot with ultrasonic sensing to detect and avoid obstacles; automatically adjusts path for smooth navigation.",
         features: [
           "Accurate ultrasonic sensing",
@@ -93,7 +107,7 @@
       },
       {
         title: "Home Water Management System using Arduino",
-        image: "images/home-water-management.jpg",
+        image: "Home Water Management System using Arduino.png",
         desc: "Monitors tank levels and auto-controls pump to prevent wastage and overflow; ensures uninterrupted water supply.",
         features: [
           "Automatic pump activation/deactivation",
@@ -105,7 +119,7 @@
       },
       {
         title: "Smart Bottle Filling and Capping System",
-        image: "images/bottle-filling-capping.jpg",
+        image: "Smart Bottle Filling and Capping System.png",
         desc: "Automated liquid filling and bottle capping for continuous small-scale production; reduces manual effort, increases efficiency.",
         features: [
           "Automatic measurement and filling control",
@@ -116,7 +130,7 @@
       },
       {
         title: "Voice-Controlled Switching using Arduino",
-        image: "images/voice-controlled-switching.jpg",
+        image: "Voice-Controlled Switching using Arduino.png",
         desc: "Voice-operated switching for appliances using spoken commands; helpful for hands-free operation and accessibility.",
         features: [
           "Recognizes pre-programmed voice commands",
@@ -127,7 +141,7 @@
       },
       {
         title: "Car Proximity Sensor",
-        image: "images/car-proximity.jpg",
+        image: "Car Proximity Sensor.png",
         desc: "Ultrasonic-based parking assistance that measures distance to obstacles and provides real-time alerts.",
         features: [
           "Ultrasonic distance detection",
@@ -138,7 +152,7 @@
       },
       {
         title: "Chrome Dinosaur Game Control Using Arduino and LDR",
-        image: "images/chrome-dino-ldr.jpg",
+        image: "Chrome Dinosaur Game Control Using Arduino and LDR.png",
         desc: "LDR-based hands-free control to trigger jumps in the Chrome Dinosaur game using light changes.",
         features: [
           "Hands-free game control",
@@ -148,7 +162,7 @@
       },
       {
         title: "Robotic Arm Using Arduino",
-        image: "images/robotic-arm-arduino.jpg",
+        image: "Robotic Arm.png",
         desc: "Programmable arm for simple pick-and-place tasks; manual or automatic operation via servos.",
         features: [
           "Multiple servo motor control",
@@ -159,7 +173,7 @@
       },
       {
         title: "Remote Controlled Car Using Arduino",
-        image: "images/rc-car-arduino.jpg",
+        image: "Remote Controlled Car Using Arduino.png",
         desc: "DIY vehicle controlled by RF/IR/Bluetooth with speed and direction control; great for learning and hobby projects.",
         features: [
           "Wireless control interface",
@@ -170,7 +184,7 @@
       },
       {
         title: "Smoke Sensor Using Arduino",
-        image: "images/smoke-sensor.jpg",
+        image: "Smoke Sensor Using Arduino.png",
         desc: "Safety device that detects smoke and triggers alarms for early hazard prevention.",
         features: [
           "Early fire hazard detection",
@@ -181,7 +195,7 @@
       },
       {
         title: "Wireless 5V Mobile Charger",
-        image: "images/wireless-charger.jpg",
+        image: "Wireless 5V Mobile Charger.png",
         desc: "Inductive-coupling wireless charger prototype providing 5V output for smartphones.",
         features: [
           "Inductive charging method",
@@ -192,7 +206,7 @@
       },
       {
         title: "Temperature Control Using Arduino and DHT11 Sensor",
-        image: "images/temp-control-dht11.jpg",
+        image: "Temperature Control Using Arduino and DHT11 Sensor.png",
         desc: "Monitors and controls temperature using DHT11; automatically toggles connected devices and displays on LCD.",
         features: [
           "DHT11 sensor-based measurement",
@@ -203,7 +217,7 @@
       },
       {
         title: "Water Level Indicator Using Transistors as a Switch",
-        image: "images/water-level-indicator.jpg",
+        image: "Water Level Indicator Using Transistors as a Switch.png",
         desc: "Low-cost, MCU-free LED indication for tank water levels using transistor switching.",
         features: [
           "LED water level indication",
@@ -214,7 +228,7 @@
       },
       {
         title: "Automatic Street Lights using Transistor as a Switch",
-        image: "images/auto-street-lights.jpg",
+        image: "Automatic Street Lights using Transistor as a Switch.png",
         desc: "Turns streetlights on at night and off in daylight using an LDR & transistor circuit.",
         features: [
           "Automatic day/night sensing",
@@ -225,7 +239,7 @@
       },
       {
         title: "Burglar Alarm System Using 555 Timer IC",
-        image: "images/burglar-alarm-555.jpg",
+        image: "Burglar Alarm System Using 555 Timer IC.png",
         desc: "Motion-triggered intrusion alarm based on 555 timer; simple and reliable.",
         features: [
           "Motion-triggered alert",
@@ -236,7 +250,7 @@
       },
       {
         title: "Automatic Water Pump",
-        image: "images/automatic-water-pump.jpg",
+        image: "Water.png",
         desc: "Pump control system triggered by water level to avoid dry running and maintain supply.",
         features: [
           "Automatic on/off control",
@@ -247,7 +261,7 @@
       },
       {
         title: "IR Sensor Using LM358 IC",
-        image: "images/ir-sensor-lm358.jpg",
+        image: "IR Sensor Using LM358 IC.png",
         desc: "Infrared proximity sensor using LM358 comparator; useful in automation/counters.",
         features: [
           "Adjustable detection sensitivity",
@@ -258,7 +272,7 @@
       },
       {
         title: "Digital Multimeter Using ATmega16",
-        image: "images/dmm-atmega16.jpg",
+        image: "Digital Multimeter Using ATmega16.png",
         desc: "Measures voltage, current, and resistance via MCU; results on LCD.",
         features: [
           "Multiple electrical parameters",
@@ -269,7 +283,7 @@
       },
       {
         title: "Thermomechanical Stirrer RPM Measurer & Controller",
-        image: "images/stirrer-rpm-controller.jpg",
+        image: "Thermomechanical Stirrer RPM Measurer & Controller.png",
         desc: "Lab stirrer with RPM measurement and temperature control for precise mixing.",
         features: [
           "RPM monitoring and adjustment",
@@ -280,7 +294,7 @@
       },
       {
         title: "Password-Based Home Circuit Breaker",
-        image: "images/password-circuit-breaker.jpg",
+        image: "Password-Based Home Circuit Breaker.png",
         desc: "Secure power control that activates only on correct keypad password.",
         features: [
           "Keypad-based access control",
@@ -291,7 +305,7 @@
       },
       {
         title: "Plasma Globe",
-        image: "images/plasma-globe.jpg",
+        image: "Plasma Globe.png",
         desc: "High-voltage display producing colorful plasma filaments inside a glass sphere.",
         features: [
           "Attractive visual display",
@@ -302,7 +316,7 @@
       },
       {
         title: "Two Storey Smart Parking using Arduino",
-        image: "images/two-storey-parking.jpg",
+        image: "Two Storey Smart Parking using Arduino.png",
         desc: "Manages parking across two levels with slot detection and driver guidance.",
         features: [
           "Ultrasonic sensors for real-time slot detection",
@@ -313,7 +327,7 @@
       },
       {
         title: "Fault Detection in Underground Cables",
-        image: "images/underground-cable-fault.jpg",
+        image: "Fault Detection in Underground Cables.png",
         desc: "Voltage-drop-based testing to locate faults in underground cables.",
         features: [
           "Accurate fault location",
@@ -324,7 +338,7 @@
       },
       {
         title: "Under & Over Voltage Protection Using Arduino",
-        image: "images/under-over-voltage.jpg",
+        image: "Under & Over Voltage Protection Using Arduino.png",
         desc: "Monitors voltage and disconnects power on abnormal fluctuations; shows status on LCD.",
         features: [
           "Real-time voltage sensing",
@@ -335,7 +349,7 @@
       },
       {
         title: "GSM-Based Prepaid Energy Meter Using Arduino",
-        image: "images/gsm-prepaid-meter.jpg",
+        image: "GSM-Based Prepaid Energy Meter Using Arduino.png",
         desc: "Prepaid metering with GSM for recharges and live consumption monitoring; auto cutoff on credit expiry.",
         features: [
           "Remote recharge through GSM",
@@ -346,7 +360,7 @@
       },
       {
         title: "Variable Frequency Drive",
-        image: "images/vfd.jpg",
+        image: "Variable Frequency Drive.png",
         desc: "Controls AC motor speed via variable frequency/voltage; improves process control and energy use.",
         features: [
           "Precise motor speed and torque control",
@@ -359,7 +373,7 @@
       },
       {
         title: "Home Energy Management System",
-        image: "images/home-energy-management.jpg",
+        image: "Home Energy Management System.png",
         desc: "Tracks household energy in real time, schedules loads, integrates renewables and alerts.",
         features: [
           "Real-time energy monitoring with breakdowns",
@@ -367,20 +381,6 @@
           "Integration with renewables, storage, alerts"
         ],
         sensors: "Current Sensor (ACS712), Voltage Sensor Module"
-      },
-      {
-        title: "Design and Development of Smart Hydropower System",
-        image: "images/smart-hydropower.jpg",
-        desc: "Hydropower plant with online monitoring/control to stabilize voltage and frequency, with IoT logging and alarms.",
-        features: [
-          "Uninterrupted Power Supply",
-          "Stabilized Frequency & Voltage",
-          "24/7 IoT-based monitoring",
-          "Remote access via web",
-          "Continuous online data logging",
-          "Fault alarming"
-        ],
-        sensors: "ACS712 Current Sensor, Smoke sensor, Tachometer, Servomotor"
       }
     ];
 
