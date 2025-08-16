@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects – Ali Hassan Bhatti</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .line-clamp-3 {
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Back to CV -->
+  <a href="index.html"
+     class="fixed top-4 left-4 px-4 py-2 bg-gray-200 text-gray-800 rounded-lg shadow hover:bg-gray-300 transition">
+     ← Back to CV
+  </a>
+
+  <div class="container mx-auto max-w-7xl p-6 my-8">
+    <header class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-gray-900">Project Portfolio</h1>
+      <p class="text-gray-600">Ali Hassan Bhatti · Electrical Engineer — Automation — Electronics & Embedded Systems — AI</p>
+    </header>
+
+    <!-- Search / filter -->
+    <div class="mb-6 flex items-center gap-3">
+      <input id="search" type="text" placeholder="Search projects (e.g. IoT, Arduino, sensor)..."
+             class="w-full md:w-1/2 px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring" />
+      <span id="count" class="text-sm text-gray-600"></span>
+    </div>
+
+    <!-- Grid -->
+    <div id="grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </div>
+
+  <template id="card-template">
+    <article class="bg-white rounded-xl overflow-hidden shadow hover:shadow-xl transition flex flex-col">
+      <img class="w-full h-44 object-cover bg-gray-200" loading="lazy" alt="">
+      <div class="p-4 flex-1 flex flex-col">
+        <h2 class="text-lg font-semibold text-gray-900"></h2>
+        <p class="text-gray-700 mt-2 line-clamp-3"></p>
+
+        <h3 class="mt-3 text-sm font-semibold text-gray-800">Key Features</h3>
+        <ul class="list-disc list-inside text-gray-700 text-sm space-y-1"></ul>
+
+        <h3 class="mt-3 text-sm font-semibold text-gray-800">Sensors</h3>
+        <p class="text-gray-700 text-sm mb-2"></p>
+
+        <!-- Optional links row (add later if you want GitHub/demo) -->
+        <!-- <div class="mt-auto pt-2"><a href="#" class="text-blue-600 text-sm hover:underline">View Code</a></div> -->
+      </div>
+    </article>
+  </template>
+
+  <script>
+    // 🔧 Fill in images you add to /images (or change the path per item)
+    const projects = [
+      {
+        title: "Temperature Control and Energy Monitoring System",
+        image: "images/temp-control-energy.jpg",
+        desc: "Uses a microcontroller and temperature sensors to control fans/heaters/AC based on thresholds and track power usage; suited for homes and industries.",
+        features: [
+          "Automatic appliance control based on temperature",
+          "Energy consumption tracking and display",
+          "Real-time temperature monitoring via LCD"
+        ],
+        sensors: "DHT11 Temperature & Humidity Sensor, Current Sensor (ACS712), Voltage Sensor Module"
+      },
+      {
+        title: "Arduino Based Radar",
+        image: "images/arduino-radar.jpg",
+        desc: "Ultrasonic radar scans a set area, detects objects, and displays positions; compact, cost-effective real-world radar simulation.",
+        features: [
+          "Adjustable object detection range",
+          "Real-time scanning and visualization",
+          "Portable and lightweight setup"
+        ],
+        sensors: "Ultrasonic Sensor (HC-SR04), Servo Motor"
+      },
+      {
+        title: "Obstacle Avoidance Robot",
+        image: "images/obstacle-avoidance-robot.jpg",
+        desc: "Autonomous robot with ultrasonic sensing to detect and avoid obstacles; automatically adjusts path for smooth navigation.",
+        features: [
+          "Accurate ultrasonic sensing",
+          "Automatic path adjustment",
+          "Works in both indoor and outdoor spaces"
+        ],
+        sensors: "Ultrasonic Sensor (HC-SR04), IR sensor"
+      },
+      {
+        title: "Home Water Management System using Arduino",
+        image: "images/home-water-management.jpg",
+        desc: "Monitors tank levels and auto-controls pump to prevent wastage and overflow; ensures uninterrupted water supply.",
+        features: [
+          "Automatic pump activation/deactivation",
+          "Alerts for low or full water levels",
+          "Saves water and energy",
+          "Fills tanks as per user selection"
+        ],
+        sensors: "Water Flow Sensor (YF-S201), Water Level Sensor"
+      },
+      {
+        title: "Smart Bottle Filling and Capping System",
+        image: "images/bottle-filling-capping.jpg",
+        desc: "Automated liquid filling and bottle capping for continuous small-scale production; reduces manual effort, increases efficiency.",
+        features: [
+          "Automatic measurement and filling control",
+          "Integrated capping mechanism",
+          "Reduces human involvement in production"
+        ],
+        sensors: "IR Sensor (liquid level detection), Limit Switch Sensor (for capping position)"
+      },
+      {
+        title: "Voice-Controlled Switching using Arduino",
+        image: "images/voice-controlled-switching.jpg",
+        desc: "Voice-operated switching for appliances using spoken commands; helpful for hands-free operation and accessibility.",
+        features: [
+          "Recognizes pre-programmed voice commands",
+          "Controls multiple devices",
+          "Enhances convenience and accessibility"
+        ],
+        sensors: "Voice Recognition Module V3 (Microphone included)"
+      },
+      {
+        title: "Car Proximity Sensor",
+        image: "images/car-proximity.jpg",
+        desc: "Ultrasonic-based parking assistance that measures distance to obstacles and provides real-time alerts.",
+        features: [
+          "Ultrasonic distance detection",
+          "Audio and/or visual alerts",
+          "Easy to install in vehicles"
+        ],
+        sensors: "Ultrasonic Sensor (HC-SR04)"
+      },
+      {
+        title: "Chrome Dinosaur Game Control Using Arduino and LDR",
+        image: "images/chrome-dino-ldr.jpg",
+        desc: "LDR-based hands-free control to trigger jumps in the Chrome Dinosaur game using light changes.",
+        features: [
+          "Hands-free game control",
+          "Simple and engaging design"
+        ],
+        sensors: "Light Dependent Resistor (LDR)"
+      },
+      {
+        title: "Robotic Arm Using Arduino",
+        image: "images/robotic-arm-arduino.jpg",
+        desc: "Programmable arm for simple pick-and-place tasks; manual or automatic operation via servos.",
+        features: [
+          "Multiple servo motor control",
+          "Customizable movement range",
+          "Manual or programmed operation"
+        ],
+        sensors: "Potentiometer, Limit Switch Sensors"
+      },
+      {
+        title: "Remote Controlled Car Using Arduino",
+        image: "images/rc-car-arduino.jpg",
+        desc: "DIY vehicle controlled by RF/IR/Bluetooth with speed and direction control; great for learning and hobby projects.",
+        features: [
+          "Wireless control interface",
+          "Adjustable speed and direction",
+          "Rechargeable power source"
+        ],
+        sensors: "IR Receiver Module / Bluetooth Module (HC-05)"
+      },
+      {
+        title: "Smoke Sensor Using Arduino",
+        image: "images/smoke-sensor.jpg",
+        desc: "Safety device that detects smoke and triggers alarms for early hazard prevention.",
+        features: [
+          "Early fire hazard detection",
+          "Audio-visual alert system",
+          "Compact and reliable design"
+        ],
+        sensors: "MQ-2 Smoke & Gas Sensor"
+      },
+      {
+        title: "Wireless 5V Mobile Charger",
+        image: "images/wireless-charger.jpg",
+        desc: "Inductive-coupling wireless charger prototype providing 5V output for smartphones.",
+        features: [
+          "Inductive charging method",
+          "Good for desks/stands/furniture integration",
+          "Short-circuit and overheat protection"
+        ],
+        sensors: "—"
+      },
+      {
+        title: "Temperature Control Using Arduino and DHT11 Sensor",
+        image: "images/temp-control-dht11.jpg",
+        desc: "Monitors and controls temperature using DHT11; automatically toggles connected devices and displays on LCD.",
+        features: [
+          "DHT11 sensor-based measurement",
+          "Automatic device control",
+          "LCD display output"
+        ],
+        sensors: "DHT11 Temperature & Humidity Sensor"
+      },
+      {
+        title: "Water Level Indicator Using Transistors as a Switch",
+        image: "images/water-level-indicator.jpg",
+        desc: "Low-cost, MCU-free LED indication for tank water levels using transistor switching.",
+        features: [
+          "LED water level indication",
+          "Minimal components",
+          "Low maintenance design"
+        ],
+        sensors: "— (Transistor-based circuit)"
+      },
+      {
+        title: "Automatic Street Lights using Transistor as a Switch",
+        image: "images/auto-street-lights.jpg",
+        desc: "Turns streetlights on at night and off in daylight using an LDR & transistor circuit.",
+        features: [
+          "Automatic day/night sensing",
+          "Low-cost circuitry",
+          "Reduces manual operation"
+        ],
+        sensors: "Light Dependent Resistor (LDR)"
+      },
+      {
+        title: "Burglar Alarm System Using 555 Timer IC",
+        image: "images/burglar-alarm-555.jpg",
+        desc: "Motion-triggered intrusion alarm based on 555 timer; simple and reliable.",
+        features: [
+          "Motion-triggered alert",
+          "Loud audible alarm",
+          "Compact, easy-to-build design"
+        ],
+        sensors: "PIR Motion Sensor"
+      },
+      {
+        title: "Automatic Water Pump",
+        image: "images/automatic-water-pump.jpg",
+        desc: "Pump control system triggered by water level to avoid dry running and maintain supply.",
+        features: [
+          "Automatic on/off control",
+          "Water level sensing",
+          "Reduces human monitoring"
+        ],
+        sensors: "Soil Moisture Sensor, Water Level Sensor"
+      },
+      {
+        title: "IR Sensor Using LM358 IC",
+        image: "images/ir-sensor-lm358.jpg",
+        desc: "Infrared proximity sensor using LM358 comparator; useful in automation/counters.",
+        features: [
+          "Adjustable detection sensitivity",
+          "Simple component setup",
+          "Low power consumption"
+        ],
+        sensors: "IR LED + Photodiode"
+      },
+      {
+        title: "Digital Multimeter Using ATmega16",
+        image: "images/dmm-atmega16.jpg",
+        desc: "Measures voltage, current, and resistance via MCU; results on LCD.",
+        features: [
+          "Multiple electrical parameters",
+          "Digital LCD display",
+          "Battery-powered operation"
+        ],
+        sensors: "Voltage Sensor, Current Sensor, Resistance Measurement Circuit"
+      },
+      {
+        title: "Thermomechanical Stirrer RPM Measurer & Controller",
+        image: "images/stirrer-rpm-controller.jpg",
+        desc: "Lab stirrer with RPM measurement and temperature control for precise mixing.",
+        features: [
+          "RPM monitoring and adjustment",
+          "Integrated temperature control",
+          "Suitable for lab use"
+        ],
+        sensors: "Temperature Sensor (LM35), Optical RPM Sensor (IR LED + Photodiode)"
+      },
+      {
+        title: "Password-Based Home Circuit Breaker",
+        image: "images/password-circuit-breaker.jpg",
+        desc: "Secure power control that activates only on correct keypad password.",
+        features: [
+          "Keypad-based access control",
+          "Prevents unauthorized power usage",
+          "User-programmable password"
+        ],
+        sensors: "Keypad module"
+      },
+      {
+        title: "Plasma Globe",
+        image: "images/plasma-globe.jpg",
+        desc: "High-voltage display producing colorful plasma filaments inside a glass sphere.",
+        features: [
+          "Attractive visual display",
+          "Touch-sensitive patterns",
+          "Educational and decorative use"
+        ],
+        sensors: "—"
+      },
+      {
+        title: "Two Storey Smart Parking using Arduino",
+        image: "images/two-storey-parking.jpg",
+        desc: "Manages parking across two levels with slot detection and driver guidance.",
+        features: [
+          "Ultrasonic sensors for real-time slot detection",
+          "LED/LCD indicators to guide drivers",
+          "Efficient space utilization across two levels"
+        ],
+        sensors: "Ultrasonic Sensors (HC-SR04), IR Sensors"
+      },
+      {
+        title: "Fault Detection in Underground Cables",
+        image: "images/underground-cable-fault.jpg",
+        desc: "Voltage-drop-based testing to locate faults in underground cables.",
+        features: [
+          "Accurate fault location",
+          "Reduces repair time",
+          "Low-cost testing method"
+        ],
+        sensors: "Voltage Sensor Modules"
+      },
+      {
+        title: "Under & Over Voltage Protection Using Arduino",
+        image: "images/under-over-voltage.jpg",
+        desc: "Monitors voltage and disconnects power on abnormal fluctuations; shows status on LCD.",
+        features: [
+          "Real-time voltage sensing",
+          "Automatic disconnection",
+          "LCD status display"
+        ],
+        sensors: "Voltage Sensor Modules"
+      },
+      {
+        title: "GSM-Based Prepaid Energy Meter Using Arduino",
+        image: "images/gsm-prepaid-meter.jpg",
+        desc: "Prepaid metering with GSM for recharges and live consumption monitoring; auto cutoff on credit expiry.",
+        features: [
+          "Remote recharge through GSM",
+          "Real-time consumption monitoring",
+          "Automatic power cutoff on credit expiry"
+        ],
+        sensors: "Current Sensor (ACS712), Voltage Sensor Module"
+      },
+      {
+        title: "Variable Frequency Drive",
+        image: "images/vfd.jpg",
+        desc: "Controls AC motor speed via variable frequency/voltage; improves process control and energy use.",
+        features: [
+          "Precise motor speed and torque control",
+          "Enhanced energy efficiency and cost savings",
+          "Smooth acceleration/deceleration",
+          "Reduced mechanical stress on motors",
+          "Compatibility with various motor types"
+        ],
+        sensors: "—"
+      },
+      {
+        title: "Home Energy Management System",
+        image: "images/home-energy-management.jpg",
+        desc: "Tracks household energy in real time, schedules loads, integrates renewables and alerts.",
+        features: [
+          "Real-time energy monitoring with breakdowns",
+          "Automated load scheduling and control",
+          "Integration with renewables, storage, alerts"
+        ],
+        sensors: "Current Sensor (ACS712), Voltage Sensor Module"
+      },
+      {
+        title: "Design and Development of Smart Hydropower System",
+        image: "images/smart-hydropower.jpg",
+        desc: "Hydropower plant with online monitoring/control to stabilize voltage and frequency, with IoT logging and alarms.",
+        features: [
+          "Uninterrupted Power Supply",
+          "Stabilized Frequency & Voltage",
+          "24/7 IoT-based monitoring",
+          "Remote access via web",
+          "Continuous online data logging",
+          "Fault alarming"
+        ],
+        sensors: "ACS712 Current Sensor, Smoke sensor, Tachometer, Servomotor"
+      }
+    ];
+
+    const grid = document.getElementById('grid');
+    const tpl = document.getElementById('card-template');
+    const search = document.getElementById('search');
+    const count = document.getElementById('count');
+
+    function render(list) {
+      grid.innerHTML = "";
+      list.forEach(p => {
+        const node = tpl.content.cloneNode(true);
+        const img = node.querySelector("img");
+        const title = node.querySelector("h2");
+        const desc = node.querySelector("p");
+        const featuresUl = node.querySelectorAll("ul")[0];
+        const sensorsP = node.querySelectorAll("p")[1];
+
+        img.src = p.image;
+        img.alt = p.title;
+        title.textContent = p.title;
+        desc.textContent = p.desc;
+
+        featuresUl.innerHTML = "";
+        p.features.forEach(f => {
+          const li = document.createElement("li");
+          li.textContent = f;
+          featuresUl.appendChild(li);
+        });
+
+        sensorsP.textContent = p.sensors || "—";
+        grid.appendChild(node);
+      });
+      count.textContent = `${list.length} project${list.length === 1 ? "" : "s"}`;
+    }
+
+    // Simple search across title/desc/features/sensors
+    function normalize(s) { return (s || "").toLowerCase(); }
+    search.addEventListener("input", e => {
+      const q = normalize(e.target.value);
+      const filtered = projects.filter(p =>
+        normalize(p.title).includes(q) ||
+        normalize(p.desc).includes(q) ||
+        normalize(p.sensors).includes(q) ||
+        (p.features || []).some(f => normalize(f).includes(q))
+      );
+      render(filtered);
+    });
+
+    render(projects);
+  </script>
+</body>
+</html>
