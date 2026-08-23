@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Ali Hassan Bhatti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --ink:#0B1F33;
+            --ink-soft:#16324D;
+            --paper:#FBF9F4;
+            --paper-dim:#F1EEE4;
+            --copper:#B8703F;
+            --copper-bright:#D98A4F;
+            --slate:#2A3642;
+            --slate-soft:#5B6773;
+            --wire:#C9BFA8;
+            --led:#4C8F63;
+        }
+        *{box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{
+            margin:0;
+            font-family:'Inter',sans-serif;
+            background:var(--paper-dim);
+            color:var(--slate);
+            line-height:1.6;
+        }
+        .nav-pill{
+            position:fixed;
+            top:1rem;
+            z-index:40;
+            padding:0.55rem 1.1rem;
+            border-radius:999px;
+            font-family:'IBM Plex Mono',monospace;
+            font-size:0.72rem;
+            letter-spacing:0.06em;
+            text-transform:uppercase;
+            text-decoration:none;
+            box-shadow:0 4px 14px rgba(11,31,51,0.18);
+            transition:transform .15s ease, box-shadow .15s ease;
+        }
+        .nav-pill:hover{ transform:translateY(-1px); box-shadow:0 6px 18px rgba(11,31,51,0.26); }
+        .nav-left{ left:1rem; background:var(--led); color:#fff; }
+        .nav-right{ right:1rem; background:var(--ink); color:#fff; }
+
+        .sheet{
+            max-width:960px;
+            margin:0 auto;
+            background:var(--paper);
+            box-shadow:0 20px 60px rgba(11,31,51,0.15);
+            border:1px solid #E7E1D0;
+        }
+
+        /* ---- Header / hero ---- */
+        .hero{
+            position:relative;
+            background:
+                radial-gradient(circle at 88% 12%, rgba(217,138,79,0.18), transparent 45%),
+                linear-gradient(160deg, var(--ink) 0%, var(--ink-soft) 100%);
+            color:var(--paper);
+            padding:3.2rem 3rem 2.6rem;
+            overflow:hidden;
+        }
+        .hero::before{
+            content:"";
+            position:absolute;
+            inset:0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size:26px 26px;
+            opacity:0.5;
+            pointer-events:none;
+        }
+        .hero-content{ position:relative; z-index:1; }
+        .eyebrow{
+            font-family:'IBM Plex Mono',monospace;
+            font-size:0.72rem;
+            letter-spacing:0.22em;
+            text-transform:uppercase;
+            color:var(--copper-bright);
+            display:flex;
+            align-items:center;
+            gap:0.6rem;
+        }
+        .eyebrow::before{
+            content:"";
+            width:10px;height:10px;
+            border-radius:50%;
+            background:var(--led);
+            box-shadow:0 0 0 3px rgba(76,143,99,0.25);
+        }
+        .hero h1{
+            font-family:'Fraunces',serif;
+            font-weight:600;
+            font-size:clamp(2.2rem,5vw,3.2rem);
+            margin:0.6rem 0 0.3rem;
+            letter-spacing:-0.01em;
+        }
+        .hero .role{
+            font-family:'IBM Plex Mono',monospace;
+            font-size:1rem;
+            color:#D9CFC0;
+            letter-spacing:0.02em;
+        }
+
+        /* ---- Layout ---- */
+        .grid{ display:grid; grid-template-columns:1fr; }
+        @media(min-width:860px){ .grid{ grid-template-columns:270px 1fr; } }
+
+        .sidebar{
+            background:var(--paper-dim);
+            border-right:1px dashed var(--wire);
+            padding:2.4rem 2rem;
+        }
+        .side-block + .side-block{ margin-top:2.2rem; }
+        .side-title{
+            font-family:'IBM Plex Mono',monospace;
+            font-size:0.7rem;
+            letter-spacing:0.16em;
+            text-transform:uppercase;
+            color:var(--copper);
+            margin:0 0 0.8rem;
+            display:flex; align-items:center; gap:0.5rem;
+        }
+        .side-title::after{ content:""; flex:1; height:1px; background:var(--wire); }
+        .side-block p{ margin:0.35rem 0; font-size:0.88rem; color:var(--slate-soft); }
+        .side-block a{ color:var(--ink-soft); text-decoration:none; border-bottom:1px solid var(--copper-bright); }
+        .side-block a:hover{ color:var(--copper); }
+        .side-block strong{ color:var(--slate); }
+
+        .main{ padding:2.6rem 3rem 3rem; }
+
+        h2.section-title{
+            font-family:'Fraunces',serif;
+            font-weight:600;
+            font-size:1.5rem;
+            color:var(--ink);
+            margin:2.4rem 0 1.1rem;
+            padding-bottom:0.6rem;
+            position:relative;
+            border-bottom:1px solid #E7E1D0;
+        }
+        h2.section-title:first-child{ margin-top:0; }
+        h2.section-title::before{
+            content:"";
+            display:inline-block;
+            width:9px; height:9px;
+            background:var(--copper-bright);
+            transform:rotate(45deg);
+            margin-right:0.6rem;
+            vertical-align:middle;
+        }
+
+        h3{
+            font-family:'Fraunces',serif;
+            font-size:1.15rem;
+            font-weight:600;
+            color:var(--ink);
+            margin:0 0 0.15rem;
+        }
+        h4{ font-size:1.02rem; font-weight:600; color:var(--slate); margin:0.2rem 0; }
+
+        .skills-line{ font-size:0.95rem; color:var(--slate-soft); }
+        .skills-line b{ color:var(--slate); }
+
+        /* Timeline / entries as a circuit trace */
+        .entry{
+            position:relative;
+            padding:0 0 0 1.6rem;
+            margin-bottom:1.9rem;
+            border-left:1.5px dashed var(--wire);
+        }
+        .entry::before{
+            content:"";
+            position:absolute;
+            left:-5px; top:0.35rem;
+            width:9px; height:9px;
+            border-radius:50%;
+            background:var(--paper);
+            border:2px solid var(--copper);
+        }
+        .date-span{
+            font-family:'IBM Plex Mono',monospace;
+            font-size:0.76rem;
+            letter-spacing:0.03em;
+            color:var(--copper);
+            text-transform:uppercase;
+        }
+        .org{ font-weight:600; color:var(--slate); font-size:0.95rem; margin:0.1rem 0 0.5rem; }
+        ul.entry-list{ list-style:none; margin:0.4rem 0 0; padding:0; font-size:0.92rem; color:var(--slate-soft); }
+        ul.entry-list li{ position:relative; padding-left:1.15rem; margin-bottom:0.4rem; }
+        ul.entry-list li::before{ content:"›"; position:absolute; left:0; color:var(--copper-bright); font-weight:700; }
+        .sector-tag{
+            display:inline-block;
+            margin-top:0.3rem;
+            font-family:'IBM Plex Mono',monospace;
+            font-size:0.7rem;
+            letter-spacing:0.05em;
+            color:#fff;
+            background:var(--ink-soft);
+            padding:0.15rem 0.55rem;
+            border-radius:3px;
+        }
+
+        figure.snap{ margin:1rem 0 1.2rem; max-width:340px; }
+        figure.snap img{ width:100%; border-radius:6px; border:1px solid #E7E1D0; box-shadow:0 6px 18px rgba(11,31,51,0.12); }
+        figure.snap figcaption{ margin-top:0.5rem; font-family:'IBM Plex Mono',monospace; font-size:0.68rem; color:var(--slate-soft); font-style:normal; text-align:left; }
+
+        .pub-list{ list-style:none; padding:0; margin:0.4rem 0 0; font-size:0.9rem; color:var(--slate-soft); }
+        .pub-list li{ margin-bottom:0.7rem; padding-left:1.1rem; position:relative; }
+        .pub-list li::before{ content:"§"; position:absolute; left:0; color:var(--copper); }
+        .publication-link{ color:var(--ink-soft); border-bottom:1px solid var(--copper-bright); text-decoration:none; }
+        .publication-link:hover{ color:var(--copper); }
+
+        table.lang-table{ width:100%; border-collapse:collapse; margin-top:0.6rem; font-size:0.88rem; }
+        table.lang-table th{
+            font-family:'IBM Plex Mono',monospace;
+            font-size:0.68rem;
+            text-transform:uppercase;
+            letter-spacing:0.05em;
+            color:#fff;
+            background:var(--ink);
+            padding:0.5rem 0.7rem;
+            text-align:left;
+        }
+        table.lang-table td{ padding:0.5rem 0.7rem; border-bottom:1px solid #E7E1D0; color:var(--slate-soft); }
+        table.lang-table tr:nth-child(even) td{ background:var(--paper-dim); }
+
+        footer.sheet-footer{
+            text-align:center;
+            padding:1.4rem;
+            font-family:'IBM Plex Mono',monospace;
+            font-size:0.68rem;
+            letter-spacing:0.08em;
+            color:var(--slate-soft);
+            background:var(--paper-dim);
+            border-top:1px dashed var(--wire);
+        }
+
+        @media print{
+            .nav-pill{ display:none; }
+            body{ background:#fff; }
+            .sheet{ box-shadow:none; border:none; }
+        }
+        @media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
+    </style>
+</head>
+<body>
+
+    <a href="./Recent/newsite.html" class="nav-pill nav-left">Recent Project</a>
+    <a href="./projects/Projects.html" class="nav-pill nav-right">Project Portfolio</a>
+
+    <div class="sheet">
+
+        <header class="hero">
+            <div class="hero-content">
+                <div class="eyebrow">Curriculum Vitae · Circuit to System</div>
+                <h1>Ali Hassan Bhatti</h1>
+                <p class="role">Electrical Engineer — Robotics &amp; AI</p>
+            </div>
+        </header>
+
+        <div class="grid">
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+                <div class="side-block">
+                    <p class="side-title">Contact</p>
+                    <p><strong>Address</strong><br>Glenorchy, Hobart, Tasmania, Australia</p>
+                    <p><strong>Phone</strong><br><a href="tel:0482030093">0482030093</a> / <a href="tel:0430827541">0430827541</a></p>
+                    <p><strong>Email</strong><br><a href="mailto:bhattialihassan042@gmail.com">bhattialihassan042@gmail.com</a></p>
+                    <p><strong>LinkedIn</strong><br><a href="https://www.linkedin.com/in/ali-hassan-522559113/" target="_blank" rel="noopener noreferrer">ali-hassan-522559113</a></p>
+                    <p><strong>GitHub</strong><br><a href="https://github.com/Alihassan7212" target="_blank" rel="noopener noreferrer">Alihassan7212</a></p>
+                </div>
+
+                <div class="side-block">
+                    <p class="side-title">Notable Links</p>
+                    <p><strong>YouTube</strong><br><a href="https://youtube.com/@touet?si=d7llprNbbosDcfSW" target="_blank" rel="noopener noreferrer">Vlogging is my Hobby</a></p>
+                    <p><strong>YouTube</strong><br><a href="https://youtube.com/playlist?list=PLAeBa1VF1qr8bIDhfOcaZZzpDHUJrWB68&si=7fVzMibVqC_0dyzk" target="_blank" rel="noopener noreferrer">I record what I teach</a></p>
+                    <p><strong>Lincoln's Corner</strong><br><a href="https://www.facebook.com/share/p/19NG9pemhj/" target="_blank" rel="noopener noreferrer">Official Facebook feature</a></p>
+                    <p><strong>SIEP</strong><br><a href="https://www.facebook.com/share/162TkgB4pN/" target="_blank" rel="noopener noreferrer">Society led during Bachelors</a></p>
+                    <p><strong>Coventry University</strong><br><a href="https://instituteformathematicalphysicalandcomputationalsciencempcs.cmail20.com/t/j-e-siuukc-duykhuddjy-s/" rel="noopener noreferrer" target="_blank">Newsletter feature</a></p>
+                </div>
+
+                <div class="side-block">
+                    <p class="side-title">Social</p>
+                    <p><strong>Instagram</strong><br><a href="https://www.instagram.com/buss.hassan.touet?igsh=MWkxcWhiZTV3NG9sdg==" target="_blank" rel="noopener noreferrer">Connect on Instagram</a></p>
+                    <p><strong>Facebook</strong><br><a href="https://www.facebook.com/share/16VNQ2MEWh/" target="_blank" rel="noopener noreferrer">Meme page</a></p>
+                    <p><strong>WhatsApp</strong><br><a href="https://chat.whatsapp.com/HldGk5C0iXZLnwoBbL2rcH" target="_blank" rel="noopener noreferrer">Jobs group</a></p>
+                </div>
+            </aside>
+
+            <!-- MAIN -->
+            <main class="main">
+
+                <h2 class="section-title">Key Skills</h2>
+                <p class="skills-line">Circuit Designing, Python, C, C++, MATLAB Programming, Machine Learning, Research and Documentation, Data Acquisition, Sensors, Instrumentation, AutoCAD, Automation, PCB Designing, MS Office, Overleaf.</p>
+
+                <h2 class="section-title">Education and Training</h2>
+
+                <div class="entry">
+                    <p class="date-span">September 2022 – August 2026</p>
+                    <h3>Master of Science in Electrical Engineering with Specialization in Robotics and AI</h3>
+                    <p class="org">National University of Sciences and Technology (NUST), H-12 Islamabad, Pakistan</p>
+                    <p style="font-size:0.9rem;color:var(--slate-soft);"><strong>Thesis:</strong> Reinforcement Learning based Thermal Comfort Controller</p>
+                    <p style="font-size:0.9rem;color:var(--slate-soft);"><strong>Relevant Subjects:</strong> Machine Learning, Robotics, Advanced Robotics, Stochastic Systems, Human Robot Interaction, Deep Learning, Advanced Neural Networks, Graphical Models in Machine Learning, Research Methodology.</p>
+                    <figure class="snap">
+                        <img src="Coventry.png" alt="Group photo at Coventry University">
+                        <figcaption>Group photo at Coventry University with Prof. Dr. James — NUST–Coventry Student Exchange Program</figcaption>
+                    </figure>
+                </div>
+
+                <div class="entry">
+                    <p class="date-span">September 2016 – August 2020</p>
+                    <h3>Bachelor of Science in Electrical Engineering</h3>
+                    <p class="org">University of Engineering and Technology, Taxila, Pakistan</p>
+                    <figure class="snap">
+                        <img src="SIEP.jpg" alt="SIEP student society">
+                        <figcaption>Leading the student society SIEP during Bachelors</figcaption>
+                    </figure>
+                </div>
+
+                <h2 class="section-title">Work Experience</h2>
+
+                <div class="entry">
+                    <p class="date-span">August 2025 – Present</p>
+                    <h3>Machine Operator</h3>
+                    <p class="org">Programmed (Cadbury &amp; Lactalis), Tasmania</p>
+                    <ul class="entry-list">
+                        <li>Operate and monitor complex processing and/or packaging machinery in yogurt and chocolate production plants.</li>
+                        <li>Perform machine setups, changeovers, and shut-downs efficiently to minimise downtime between production runs.</li>
+                        <li>Adhere strictly to Good Manufacturing Practices (GMPs), HACCP, and other company food safety and quality management systems.</li>
+                    </ul>
+                    <span class="sector-tag">Sector: Food Manufacturing</span>
+                </div>
+
+                <div class="entry">
+                    <p class="date-span">September 2024 – July 2025</p>
+                    <h3>Machine Operator</h3>
+                    <p class="org">Coles Customer Fulfilment Centre (CFC), Truganina, Melbourne</p>
+                    <ul class="entry-list">
+                        <li>Supported minor troubleshooting of conveyor systems, GUI screens, height sensors, and IR sensors, helping maintain operational flow.</li>
+                        <li>Gained hands-on exposure to Schneider Electric PLCs and associated SCADA systems used in warehouse automation.</li>
+                    </ul>
+                    <span class="sector-tag">Sector: Warehouse Automation</span>
+                </div>
+
+                <div class="entry">
+                    <p class="date-span">November 2020 – June 2024 · Full time</p>
+                    <h3>Lab Engineer / Course Assistant</h3>
+                    <p class="org">National University of Sciences and Technology (NUST), H-12 Islamabad, Pakistan</p>
+                    <figure class="snap">
+                        <img src="Faculty.jpg" alt="NUST SMME Faculty">
+                        <figcaption>Being part of SMME's faculty was an honour</figcaption>
+                    </figure>
+                    <ul class="entry-list">
+                        <li>Subjects taught/assisted: Basic Electrical Engineering, Digital Logic Design, Electronic Devices and Circuits, Linear Controls, Machine Learning, Instrumentation and Measurement, Fundamentals of Programming, Internet of Things.</li>
+                        <li>Led the planning, installation, and preventive maintenance of electrical, electronics, and control systems across multiple laboratories, ensuring safety, compliance, and uninterrupted operations.</li>
+                        <li>Designed and supervised electrical projects incorporating microcontrollers (Arduino, Raspberry Pi, PIC) and PLCs for real-time monitoring, automation, and control.</li>
+                    </ul>
+                    <figure class="snap">
+                        <img src="Project.JPG" alt="Evaluating student projects">
+                        <figcaption>Evaluating students' projects</figcaption>
+                    </figure>
+                    <ul class="entry-list">
+                        <li>Delivered Robotics and Controls workshops.</li>
+                        <li>Developed printed circuit boards (PCBs), integrated sensors and actuators, and conducted functional and continuity testing to verify circuit integrity.</li>
+                        <li>Executed data acquisition from industrial sensors, logging real-time electrical parameters for research and performance optimization.</li>
+                        <li>Replaced and tested faulty components including PCBs, sensors, wiring, and connectors, ensuring system restoration and safety compliance.</li>
+                        <li>Organized major events including Open House, Convocation, and Conferences.</li>
+                    </ul>
+                    <figure class="snap">
+                        <img src="Trips.jpg" alt="Leading industrial trips">
+                        <figcaption>Leading industrial trips</figcaption>
+                    </figure>
+                    <ul class="entry-list">
+                        <li>Performed official administrative and clerical documentation.</li>
+                    </ul>
+                    <span class="sector-tag">Sector: Engineering</span>
+                </div>
+
+                <div class="entry">
+                    <p class="date-span">January 2024 – April 2024 · Casual</p>
+                    <h3>Visiting Researcher</h3>
+                    <p class="org">Centre for Computational Science and Mathematical Modelling (CSM), Coventry University, Coventry, England</p>
+                    <ul class="entry-list">
+                        <li>Worked on designing a reinforcement learning-based controller for home energy optimization.</li>
+                        <li>Conducted extensive research using available datasets of domestic energy consumption.</li>
+                        <li>Developed a hardware prototype to demonstrate proof of concept using the designed algorithm.</li>
+                        <li>Gave numerous research paper presentations in the machine learning domain.</li>
+                    </ul>
+                    <span class="sector-tag">Sector: Research and Development</span>
+                </div>
+
+                <div class="entry">
+                    <p class="date-span">February 2023 – December 2023 · Part time</p>
+                    <h3>Robotics Demonstrator (US-Sponsored Program)</h3>
+                    <p class="org">National Examination and Evaluation Foundation, Multan, Pakistan</p>
+                    <figure class="snap">
+                        <img src="Robogen.jpg" alt="Robogen Curriculum presentation">
+                        <figcaption>Presenting the Robogen curriculum for the USAID Robogen Program</figcaption>
+                    </figure>
+                    <ul class="entry-list">
+                        <li>Conducted robotics workshops as a Master Trainer under the US Mission's Empowering Girls Through STEM Education program.</li>
+                        <li>Taught programming on the latest 51515 robot controller.</li>
+                    </ul>
+                    <figure class="snap">
+                        <img src="Workshop.jpg" alt="Robogen workshop in Larkana">
+                        <figcaption>Delivering a Robogen workshop in Larkana</figcaption>
+                    </figure>
+                    <ul class="entry-list">
+                        <li>Contributed to promoting robotics education for females in underprivileged areas.</li>
+                    </ul>
+                    <span class="sector-tag">Sector: Education</span>
+                </div>
+
+                <div class="entry">
+                    <p class="date-span">June 2023 – September 2023 · Casual</p>
+                    <h3>IoT Trainer</h3>
+                    <p class="org">National Vocational and Technical Training Commission (NAVTTC), Islamabad, Pakistan</p>
+                    <ul class="entry-list">
+                        <li>Taught an IoT course under the NAVTTC Prime Minister's Hunarmand Pakistan Program.</li>
+                        <li>Focused on the different layers of IoT, from perception to application.</li>
+                    </ul>
+                    <figure class="snap">
+                        <img src="IoT.png" alt="IoT class students">
+                        <figcaption>With a few IoT class students</figcaption>
+                    </figure>
+                    <span class="sector-tag">Sector: Education</span>
+                </div>
+
+                <div class="entry">
+                    <p class="date-span">July 2018 – August 2018 · Internship</p>
+                    <h3>Trainee Engineer</h3>
+                    <p class="org">Islamabad Electric Supply Company (IESCO), Islamabad, Pakistan</p>
+                    <ul class="entry-list">
+                        <li>Completed hands-on training at high-voltage grid stations, gaining practical exposure to power distribution infrastructure, switchgear systems, and grid instrumentation.</li>
+                        <li>Assisted in routine inspection, testing, and maintenance of protection equipment and control panels to ensure grid stability and safety compliance.</li>
+                    </ul>
+                    <span class="sector-tag">Sector: Electrical Engineering</span>
+                </div>
+
+                <h2 class="section-title">Projects, Publications and Funding</h2>
+
+                <h4>Personal Projects</h4>
+                <ul class="entry-list">
+                    <li>Development of Smart Hydropower System aimed at providing stable output (220V, 50Hz) under sudden overloading or underloading on the power system.</li>
+                    <li>Design of a Reinforcement Learning based HVAC controller for residential buildings/houses.</li>
+                    <li>Smart Home Automation system using Raspberry Pi.</li>
+                    <li>Energy Recovery Using Regenerative Suspension System.</li>
+                    <li>Door Detection and Distance Estimation in Habitat Simulator.</li>
+                </ul>
+
+                <h4 style="margin-top:1.4rem;">
+                    <a href="https://scholar.google.com.au/citations?hl=en&user=p_Ob0O8AAAAJ" target="_blank" rel="noopener noreferrer" class="publication-link" aria-label="View Google Scholar profile (opens in a new tab)">Publications</a>
+                </h4>
+                <ul class="pub-list">
+                    <li>Ahmad, Moiz &amp; Bhatti, Ali &amp; Ashraf, Muhammad Mansoor. (2024). Energy Recovery Using Regenerative Suspension System. 1–6. <a href="https://ieeexplore.ieee.org/document/10505285" target="_blank" rel="noopener noreferrer" class="publication-link">Read the article</a>.</li>
+                    <li>Bhatti, Ali Hassan et al. Door Detection and Distance Estimation in Habitat Simulator for 3D Environments. 2023 3rd International Conference on Digital Futures and Transformative Technologies (ICoDT2) (2023): 1–8. <a href="https://ieeexplore.ieee.org/document/10325708" target="_blank" rel="noopener noreferrer" class="publication-link">Read the article</a></li>
+                </ul>
+
+                <h4 style="margin-top:1.4rem;">Projects Supervised</h4>
+                <ul class="entry-list">
+                    <li>National Drone Design Challenge, IMechE, SMME, NUST</li>
+                </ul>
+
+                <h4 style="margin-top:1.4rem;">Funding</h4>
+                <ul class="entry-list">
+                    <li>National Grassroot Level Research Initiative funding of Rs. 80,000 for the project "Design and Development of Smart Hydro Power System."</li>
+                </ul>
+
+                <h2 class="section-title">Personal Skills</h2>
+                <h4>Mother tongue(s)</h4>
+                <p class="skills-line">Urdu</p>
+
+                <h4 style="margin-top:1rem;">Other language(s)</h4>
+                <table class="lang-table">
+                    <thead>
+                        <tr>
+                            <th>Language</th>
+                            <th>Understanding</th>
+                            <th>Speaking</th>
+                            <th>Writing</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>English</td>
+                            <td>C1 (Listening)</td>
+                            <td>C2 (Spoken interaction)</td>
+                            <td>C2</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--copper);">PTE Academic Score: 85 &nbsp;·&nbsp; IELTS Academic Score: 7</td>
+                        </tr>
+                        <tr>
+                            <td>Hindi</td>
+                            <td>C1 (Listening)</td>
+                            <td>C1 (Spoken interaction)</td>
+                            <td>A1</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <figure class="snap">
+                    <img src="PTEnew.png" alt="PTE Score card">
+                    <figcaption>PTE score card</figcaption>
+                </figure>
+
+                <h4 style="margin-top:1.4rem;">Technical Skills</h4>
+                <p class="skills-line">Machine Learning, Microcontroller Programming in C and C++, Python Programming, MATLAB Programming, Circuit Designing, Power System Design, Intelligent Model Design, MS Office.</p>
+
+                <h4 style="margin-top:1.4rem;">Soft Skills</h4>
+                <p class="skills-line">Public Speaking, Time Management, Teamwork, Networking, Research and Documentation, Communication.</p>
+
+                <h2 class="section-title">Achievements</h2>
+
+                <h4>Honours and Awards</h4>
+                <ul class="entry-list">
+                    <li>Shield of Appreciation for IEEE Conference (ICoDT2) management — October 2023</li>
+                </ul>
+                <figure class="snap">
+                    <img src="IEEE.jpg" alt="IEEE Shield of Appreciation">
+                    <figcaption>Wahaj Siraj, CEO and co-founder of Nayatel, presenting the Shield of Appreciation</figcaption>
+                </figure>
+                <ul class="entry-list">
+                    <li>NGIRI Ignite national Research Funding for final year project titled "Design and Development of Smart Hydropower Systems."</li>
+                    <li>Prime Minister's Laptop Scheme for High Achievers.</li>
+                    <li>Shield of honour for tenure as Vice President of the university society (SIEP).</li>
+                </ul>
+
+                <h4 style="margin-top:1.4rem;">Global Participation</h4>
+                <ul class="entry-list">
+                    <li>Participated in AI HackLondon by Encode Club at Canary Wharf, London, England.</li>
+                </ul>
+                <figure class="snap">
+                    <img src="London.jpg" alt="AI Hack London">
+                    <figcaption>Participation in AI Hack London at Canary Wharf, London, England</figcaption>
+                </figure>
+                <ul class="entry-list">
+                    <li>Participated in AstonHack — Hackathon Challenge, Aston University, Birmingham.</li>
+                </ul>
+                <figure class="snap">
+                    <img src="AstonHack.jpeg" alt="AstonHack group photo">
+                    <figcaption>AstonHack conclusion: group photo at Aston University</figcaption>
+                </figure>
+                <ul class="entry-list">
+                    <li>Participated in HackSussex — Hackathon Challenge, University of Sussex, Brighton, England.</li>
+                </ul>
+                <figure class="snap">
+                    <img src="sussex.jpg" alt="HackSussex presentation">
+                    <figcaption>Presenting the project at HackSussex, University of Sussex</figcaption>
+                </figure>
+
+                <h4 style="margin-top:1.4rem;">Certifications</h4>
+                <ul class="entry-list">
+                    <li>Microsoft Office Specialist Master Certification (MOS)</li>
+                    <li>Deep Learning and Reinforcement Learning, IBM</li>
+                    <li>Reinforcement Learning Specialization, University of Alberta</li>
+                </ul>
+
+                <h2 class="section-title">References</h2>
+                <p class="skills-line">Will be provided on request.</p>
+
+            </main>
+        </div>
+
+        <footer class="sheet-footer">Curriculum Vitae &copy; Ali Hassan Bhatti · <span id="currentYear"></span></footer>
+    </div>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
